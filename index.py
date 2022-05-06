@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-##CADASTRAR ALUNO##
+# CADASTRAR ALUNO
 def nova_janela_cadastrar_aluno():
     nova_janela_cadastrar_aluno = Toplevel()
     nova_janela_cadastrar_aluno.title("Cadastrar Aluno")
@@ -56,7 +56,7 @@ def nova_janela_excluir_aluno():
     nova_janela_excluir_aluno.resizable(False, False)
     nova_janela_excluir_aluno.focus_force()
 
-    ##mostrar os nomes dos alunos##
+    # Mostrar os nomes dos alunos
 
     Button(nova_janela_excluir_aluno, text="EXCLUIR ALUNO").place(x=10, y=210, width=100, height=20)
     Button(nova_janela_excluir_aluno, text="VOLTAR", command=nova_janela_excluir_aluno.destroy).place(x=140, y=210,
@@ -71,7 +71,7 @@ def nova_janela_buscar_aluno():
     nova_janela_buscar_aluno.resizable(False, False)
     nova_janela_buscar_aluno.focus_force()
 
-    ##Busca os nomes dos alunos##
+    # Busca os nomes dos alunos
 
     Button(nova_janela_buscar_aluno, text="BUSCAR ALUNOS").place(x=10, y=210, width=100, height=20)
     Button(nova_janela_buscar_aluno, text="VOLTAR", command=nova_janela_buscar_aluno.destroy).place(x=140, y=210,
@@ -79,7 +79,7 @@ def nova_janela_buscar_aluno():
                                                                                                     height=20)
 
 
-##INFORMAR PRESENÇA##
+# INFORMAR PRESENÇA
 def nova_janela_informar_presenca():
     nova_janela_informar_presenca = Toplevel()
     nova_janela_informar_presenca.title("Informar Presença")
@@ -95,7 +95,7 @@ def nova_janela_informar_presenca():
     nova_janela_informar_presenca.mainloop()
 
 
-##INFORMAR AVALIAÇÃO##
+# INFORMAR AVALIAÇÃO
 def nova_janel_informar_avaliacao():
     nova_janela_informar_avaliacao = Toplevel()
     nova_janela_informar_avaliacao.title("Informar Avaliaçao")
@@ -113,7 +113,7 @@ def nova_janel_informar_avaliacao():
     nova_janela_informar_avaliacao.mainloop()
 
 
-##MENU INICIAL##
+# MENU INICIAL
 def janela():
     janela = Tk()
     janela.title("nome do programa")
