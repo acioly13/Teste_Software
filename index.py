@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 
 # CADASTRAR ALUNO
@@ -66,18 +67,55 @@ def nova_janela_excluir_aluno():
 
 def nova_janela_buscar_aluno():
     nova_janela_buscar_aluno = Toplevel()
-    nova_janela_buscar_aluno.title("Cadastrar Aluno")
+    nova_janela_buscar_aluno.title("Buscar Aluno")
     nova_janela_buscar_aluno.geometry("250x250")
     nova_janela_buscar_aluno.resizable(False, False)
     nova_janela_buscar_aluno.focus_force()
 
-    # Busca os nomes dos alunos
+    frame_direita = Frame(nova_janela_buscar_aluno, width=588, height=403, relief='flat')
+    frame_direita.grid(row=0, column=1, rowspan=2, padx=1, pady=0, sticky=NSEW)
 
-    Button(nova_janela_buscar_aluno, text="BUSCAR ALUNOS").place(x=10, y=210, width=100, height=20)
+    lista = [[1, 'Joao 1', '2019111', 'joao@mail.com', 123456789],
+             [2, 'Joao 2', '2019222', 'joao@mail.com', 123456789],
+             [3, 'Joao 3', '2019333', 'joao@mail.com', 123456789],
+             [4, 'Joao 4', '2019444', 'joao@mail.com', 123456789],
+             [5, 'Joao 5', '2019555', 'joao@mail.com', 123456789],
+             ]
+
+    # criando cabeçalho e tabela
+    tabela_head = ['ID', 'Nome', 'Matricula', 'Email', 'Telefone']
+    tree = ttk.Treeview(frame_direita, selectmode="extended", columns=tabela_head, show="headings")
+
+    # barra de rolagem vertical
+    vsb = ttk.Scrollbar(frame_direita, orient="vertical", command=tree.yview)
+
+    # barra de rolagem horizontal
+    hsb = ttk.Scrollbar(frame_direita, orient="horizontal", command=tree.xview)
+
+    tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+    tree.grid(column=0, row=0, sticky='nsew')
+    vsb.grid(column=1, row=0, sticky='ns')
+    hsb.grid(column=0, row=1, sticky='ew')
+
+    frame_direita.grid_rowconfigure(0, weight=12)
+
+    hd = ["nw", "nw", "nw", "nw", "nw", "center", "center"]
+    h = [30, 170, 140, 100, 120, 50, 100]
+    n = 0
+
+    for col in tabela_head:
+        tree.heading(col, text=col.title(), anchor=CENTER)
+        # adjust the column's width to the header string
+        tree.column(col, width=h[n], anchor=hd[n])
+        n += 1
+
+    for item in lista:
+        tree.insert('', 'end', values=item)
+
+    Button(nova_janela_buscar_aluno, text="SELECIONAR").place(x=10, y=210, width=100, height=20)
     Button(nova_janela_buscar_aluno, text="VOLTAR", command=nova_janela_buscar_aluno.destroy).place(x=140, y=210,
                                                                                                     width=100,
                                                                                                     height=20)
-
 
 # INFORMAR PRESENÇA
 def nova_janela_informar_presenca():
