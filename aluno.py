@@ -8,26 +8,27 @@ con = lite.connect('dados.db')
 
 
 # Inserir Aluno
-lista = ['teste', 201929999, 'teste@email.com', 666]
-with con:
-    cur = con.cursor()
-    query = "INSERT INTO aluno(nome, matricula, email, telefone) VALUES(?, ?, ?, ?)"
-    cur.execute(query, lista)
+def inserir_aluno(i):
+    with con:
+        cur = con.cursor()
+        query = "INSERT INTO aluno(nome, matricula, email, telefone) VALUES(?, ?, ?, ?)"
+        cur.execute(query, i)
+
 
 # Atualizar Aluno
-lista = ['teste2', 2]
-with con:
-    cur = con.cursor()
-    query = "UPDATE aluno SET nome=? WHERE id=?"
-    cur.execute(query, lista)
+def atualizar_aluno(i):
+    with con:
+        cur = con.cursor()
+        query = "UPDATE aluno SET nome=? WHERE id=?"
+        cur.execute(query, i)
 
 
 # Deletar Aluno
-lista = [2]
-with con:
-    cur = con.cursor()
-    query = "DELETE FROM aluno WHERE id=?"
-    cur.execute(query, lista)
+def deletar_aluno(i):
+    with con:
+        cur = con.cursor()
+        query = "DELETE FROM aluno WHERE id=?"
+        cur.execute(query, i)
 
 
 # Listar Aluno
