@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 # importando views
 from aluno import *
@@ -24,6 +25,7 @@ def nova_janela_cadastrar_aluno():
     nova_janela_cadastrar_aluno.mainloop()
 
 
+# Inserir Alunos
 def nova_janela_inserir_aluno():
     nova_janela_inserir_aluno = Tk()
     nova_janela_inserir_aluno.title("Cadastrar Aluno")
@@ -47,7 +49,21 @@ def nova_janela_inserir_aluno():
     telefone = Entry(nova_janela_inserir_aluno)
     telefone.place(x=10, y=180, width=90, height=20)
 
-    Button(nova_janela_inserir_aluno, text="SALVAR").place(x=10, y=210, width=100, height=20)
+    # função para salvar as entradas no banco de dados
+    def inserir():
+        nomes = nome.get()
+        matriculas = matricula.get()
+        emails = email.get()
+        telefones = telefone.get()
+
+        lista = [nomes, matriculas, emails, telefones]
+        if nomes == '' or matriculas == '' or emails == '' or telefones == '':
+            messagebox.showerror('Erro', 'Todos os campos Precisam ser preenchidos!!')
+        else:
+            inserir_aluno(lista)
+            messagebox.showinfo('Sucesso', 'Aluno Inserido')
+
+    Button(nova_janela_inserir_aluno, command=inserir, text="SALVAR").place(x=10, y=210, width=100, height=20)
     Button(nova_janela_inserir_aluno, text="VOLTAR", command=nova_janela_inserir_aluno.destroy).place(x=140, y=210,
                                                                                                       width=100,
                                                                                                       height=20)
@@ -68,6 +84,7 @@ def nova_janela_excluir_aluno():
                                                                                                       height=20)
 
 
+# Listar Alunos
 def nova_janela_buscar_aluno():
     nova_janela_buscar_aluno = Toplevel()
     nova_janela_buscar_aluno.title("Buscar Aluno")
