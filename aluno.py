@@ -21,13 +21,6 @@ with con:
     query = "UPDATE aluno SET nome=? WHERE id=?"
     cur.execute(query, lista)
 
-# Listar Aluno
-with con:
-    cur = con.cursor()
-    query = "SELECT * FROM aluno"
-    cur.execute(query)
-    info = cur.fetchall()
-    print(info)
 
 # Deletar Aluno
 lista = [2]
@@ -35,3 +28,16 @@ with con:
     cur = con.cursor()
     query = "DELETE FROM aluno WHERE id=?"
     cur.execute(query, lista)
+
+
+# Listar Aluno
+def listar_aluno():
+    lista = []
+    with con:
+        cur = con.cursor()
+        query = "SELECT * FROM aluno"
+        cur.execute(query)
+        info = cur.fetchall()
+        for i in info:
+            lista.append(i)
+    return lista

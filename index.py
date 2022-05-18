@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 
+# importando views
+from aluno import *
+
 
 # CADASTRAR ALUNO
 def nova_janela_cadastrar_aluno():
@@ -68,19 +71,14 @@ def nova_janela_excluir_aluno():
 def nova_janela_buscar_aluno():
     nova_janela_buscar_aluno = Toplevel()
     nova_janela_buscar_aluno.title("Buscar Aluno")
-    nova_janela_buscar_aluno.geometry("250x250")
+    nova_janela_buscar_aluno.geometry("550x250")
     nova_janela_buscar_aluno.resizable(False, False)
     nova_janela_buscar_aluno.focus_force()
 
     frame_direita = Frame(nova_janela_buscar_aluno, width=588, height=403, relief='flat')
     frame_direita.grid(row=0, column=1, rowspan=2, padx=1, pady=0, sticky=NSEW)
 
-    lista = [[1, 'Joao 1', '2019111', 'joao@mail.com', 123456789],
-             [2, 'Joao 2', '2019222', 'joao@mail.com', 123456789],
-             [3, 'Joao 3', '2019333', 'joao@mail.com', 123456789],
-             [4, 'Joao 4', '2019444', 'joao@mail.com', 123456789],
-             [5, 'Joao 5', '2019555', 'joao@mail.com', 123456789],
-             ]
+    lista = listar_aluno()
 
     # criando cabeçalho e tabela
     tabela_head = ['ID', 'Nome', 'Matricula', 'Email', 'Telefone']
@@ -116,6 +114,7 @@ def nova_janela_buscar_aluno():
     Button(nova_janela_buscar_aluno, text="VOLTAR", command=nova_janela_buscar_aluno.destroy).place(x=140, y=210,
                                                                                                     width=100,
                                                                                                     height=20)
+
 
 # INFORMAR PRESENÇA
 def nova_janela_informar_presenca():
